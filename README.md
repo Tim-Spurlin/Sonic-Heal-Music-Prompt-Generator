@@ -51,23 +51,43 @@
 ### Data flow (UI → prompt engine)
 ```mermaid
 flowchart LR
-  UserInputs[Genre/BPM/Drug/Frequency/Sliders] --> StateManager[React State]
-  StateManager --> PromptEngine[getPrompt()]
-  PromptEngine --> LivePanel[Live Prompt Footer]
-  LivePanel --> CopyAction[Copy / Fallback Textarea]
+  UserInputs["Genre/BPM/Drug/Frequency/Sliders"] --> StateManager["React State"]
+  StateManager --> PromptEngine["getPrompt()"]
+  PromptEngine --> LivePanel["Live Prompt Footer"]
+  LivePanel --> CopyAction["Copy / Fallback Textarea"]
 ```
 
 ### Prompt semantics over time (neurochemical response)
+Relative levels shown at 15-minute checkpoints (0–10 scale). GitHub’s Mermaid renderer doesn’t yet support `xychart`, so this uses the supported journey bars as a compact stand-in for the original line plot.
+
 ```mermaid
-%%{init: {"theme": "dark"}}%%
-xychart-beta
-    title "Neurochemical response over a 60-minute set"
-    xAxis "Minutes" [0,15,30,45,60]
-    yAxis "Relative Level"
-    line "Serotonin (warmth)" [0.2,0.6,0.9,0.8,0.7]
-    line "Dopamine (spark)" [0.3,0.5,0.65,0.55,0.4]
-    line "Oxytocin (bonding)" [0.1,0.2,0.45,0.7,0.85]
-    line "Cortisol (stress)" [0.8,0.5,0.3,0.25,0.2]
+journey
+    title Neurochemical response over a 60-minute set
+    section 0m
+      Serotonin (warmth): 2: response
+      Dopamine (spark): 3: response
+      Oxytocin (bonding): 1: response
+      Cortisol (stress): 8: response
+    section 15m
+      Serotonin (warmth): 6: response
+      Dopamine (spark): 5: response
+      Oxytocin (bonding): 2: response
+      Cortisol (stress): 5: response
+    section 30m
+      Serotonin (warmth): 9: response
+      Dopamine (spark): 7: response
+      Oxytocin (bonding): 5: response
+      Cortisol (stress): 3: response
+    section 45m
+      Serotonin (warmth): 8: response
+      Dopamine (spark): 6: response
+      Oxytocin (bonding): 7: response
+      Cortisol (stress): 3: response
+    section 60m
+      Serotonin (warmth): 7: response
+      Dopamine (spark): 4: response
+      Oxytocin (bonding): 9: response
+      Cortisol (stress): 2: response
 ```
 
 ### Harmonic balance snapshot
