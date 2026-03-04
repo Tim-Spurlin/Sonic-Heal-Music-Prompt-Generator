@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="160" viewBox="0 0 520 160">
+  <rect width="520" height="160" fill="#0b1220" />
+  <polyline
+    fill="none"
+    stroke="#a855f7"
+    stroke-width="3"
+    points="0,90 80,60 160,110 240,50 320,120 400,80 480,90 520,70"
+  >
+    <animate
+      attributeName="points"
+      dur="2.8s"
+      repeatCount="indefinite"
+      values="0,90 80,60 160,110 240,50 320,120 400,80 480,90 520,70;
+              0,90 80,120 160,60 240,130 320,70 400,110 480,60 520,90;
+              0,90 80,60 160,110 240,50 320,120 400,80 480,90 520,70"
+    />
+  </polyline>
+  <text x="260" y="150" fill="#cbd5e1" font-size="12" text-anchor="middle">
+    Animated waveform — mood-weighted envelope
+  </text>
+</svg>
