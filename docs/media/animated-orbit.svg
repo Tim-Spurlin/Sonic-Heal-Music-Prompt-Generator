@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="180" viewBox="0 0 480 180">
+  <rect width="480" height="180" fill="#0b1120" />
+  <circle cx="240" cy="90" r="60" fill="none" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 8">
+    <animate attributeName="stroke-dashoffset" from="0" to="-500" dur="6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="240" cy="90" r="3" fill="#f97316">
+    <animate attributeName="cx" values="180;300;180;300;240" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="90;60;120;90;90" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <text x="240" y="165" fill="#cbd5e1" font-size="12" text-anchor="middle">
+    Animated orbit — BPM-driven LFO + harmonic center
+  </text>
+</svg>
