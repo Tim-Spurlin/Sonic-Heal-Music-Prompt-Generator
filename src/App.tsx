@@ -12,6 +12,8 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   Ear,
 };
 
+type IconName = keyof typeof iconMap;
+
 function App() {
   const [activeTab, setActiveTab] = useState('summary');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
