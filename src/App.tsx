@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Activity, Brain, Radio, Waves, Terminal, Music, Info, Settings, Copy, CheckCircle, Zap, Ear, Sliders, Disc } from 'lucide-react';
 import { FREQUENCIES, GENRES, GenreId, FrequencyData } from '@/lib/data';
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const iconMap = {
   Music,
   Activity,
   Waves,
@@ -10,16 +10,14 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   Radio,
   Disc,
   Ear,
-};
-
-type IconName = keyof typeof iconMap;
+} as const;
 
 function App() {
   const [activeTab, setActiveTab] = useState('summary');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [activeGenre, setActiveGenre] = useState<GenreId>('minimal_house');
-  const [bpm, setBpm] = useState(GENRES['minimal_house'].defaultBpm);
+  const [bpm, setBpm] = useState<number>(GENRES['minimal_house'].defaultBpm);
   const [activeDrug, setActiveDrug] = useState<'mdma' | 'ketamine'>('mdma');
   const [activeFreq, setActiveFreq] = useState<FrequencyData>(FREQUENCIES[1]);
   const [volumes, setVolumes] = useState({ root: 100, m3: 80, P5: 60, m7: 0, M9: 0 });

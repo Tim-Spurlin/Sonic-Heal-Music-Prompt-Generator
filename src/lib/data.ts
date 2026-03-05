@@ -3,7 +3,7 @@ export const FREQUENCIES = [
   { id: '417', hz: "417", name: "Sacral / Passion", color: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/30", placement: "Mid-range width (Chorus)", role: "Linked to Svadhisthana chakra. Facilitates release of stalled sexual energy and trauma." },
   { id: '432', hz: "432 / 528", name: "Tranquility", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30", placement: "Wide Surround (Reverb)", role: "Aligns with Schumann resonance. Stimulates parasympathetic nervous system, drastically reduces cortisol." },
   { id: '4', hz: "4.0", name: "Theta Binaural", color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/30", placement: "Extreme L/R (HRTF)", role: "Phantom beat bypassing prefrontal cortex logic, forcing brain into deep subconscious trance." }
-];
+] as const;
 
 export const GENRES = {
   minimal_house: {
@@ -66,8 +66,8 @@ export const GENRES = {
     promptGroove: 'Fast, highly syncopated breakbeats (amen break style) at 170 BPM, but anchored by a smooth, half-time rolling sub-bass at 85 BPM. Intricate ghost notes on the snare/hats beneath lush, atmospheric pads.',
     negativePrompt: 'No aggressive dubstep growls, no harsh tearout bass, no four-on-the-floor kicks, no jarring drops, no distorted neurofunk bass.'
   }
-};
+} as const;
 
 export type GenreId = keyof typeof GENRES;
-export type FrequencyData = typeof FREQUENCIES[0];
+export type FrequencyData = typeof FREQUENCIES[number];
 export type GenreData = typeof GENRES[keyof typeof GENRES];
