@@ -13,6 +13,7 @@ const iconMap = {
 } as const;
 
 function App() {
+  console.log('SONIC HEAL App Loading...');
   const [activeTab, setActiveTab] = useState('summary');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
