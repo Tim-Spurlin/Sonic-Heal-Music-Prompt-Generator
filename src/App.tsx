@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Activity, Brain, Radio, Waves, Terminal, Music, Info, Settings, Copy, CheckCircle, Zap, Ear, Sliders, Disc } from 'lucide-react';
+import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { FREQUENCIES, GENRES, GenreId, FrequencyData } from '@/lib/data';
 
 const iconMap = {
@@ -11,6 +12,14 @@ const iconMap = {
   Disc,
   Ear,
 } as const;
+
+const promptSemanticsTimeline = [
+  { time: '0m', serotonin: 2, dopamine: 3, oxytocin: 1, cortisol: 8 },
+  { time: '15m', serotonin: 6, dopamine: 5, oxytocin: 2, cortisol: 5 },
+  { time: '30m', serotonin: 9, dopamine: 7, oxytocin: 5, cortisol: 3 },
+  { time: '45m', serotonin: 8, dopamine: 6, oxytocin: 7, cortisol: 3 },
+  { time: '60m', serotonin: 7, dopamine: 4, oxytocin: 9, cortisol: 2 },
+];
 
 function App() {
   console.log('SONIC HEAL App Loading...');
@@ -474,6 +483,70 @@ const NeurochemistrySection = ({ bpm, setBpm, genreName }: { bpm: number; setBpm
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 mb-10 shadow-2xl">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+          <div className="flex items-center gap-2">
+            <Terminal size={18} className="text-indigo-400" />
+            <h4 className="text-sm font-bold text-slate-300 uppercase tracking-wider">Prompt Semantics Over Time</h4>
+          </div>
+          <span className="text-[10px] font-mono text-slate-500 bg-slate-950 px-2 py-1 rounded border border-slate-800">
+            Neurochemical response (0-10 scale)
+          </span>
+        </div>
+
+        <p className="text-sm text-slate-400 mb-4">
+          Map the evolving neurochemical response across a 60-minute set so prompt language anticipates shifts in empathy, drive, bonding, and stress reduction.
+        </p>
+
+        <div className="h-[420px] w-full bg-slate-950 border border-slate-800 rounded-xl p-4 shadow-[inset_0_0_30px_rgba(0,0,0,0.6)]">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={promptSemanticsTimeline} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+              <defs>
+                <linearGradient id="serotoninFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#ec4899" stopOpacity={0.85} />
+                  <stop offset="95%" stopColor="#ec4899" stopOpacity={0.08} />
+                </linearGradient>
+                <linearGradient id="dopamineFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#60a5fa" stopOpacity={0.85} />
+                  <stop offset="95%" stopColor="#60a5fa" stopOpacity={0.08} />
+                </linearGradient>
+                <linearGradient id="oxytocinFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#34d399" stopOpacity={0.85} />
+                  <stop offset="95%" stopColor="#34d399" stopOpacity={0.08} />
+                </linearGradient>
+                <linearGradient id="cortisolFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#f87171" stopOpacity={0.85} />
+                  <stop offset="95%" stopColor="#f87171" stopOpacity={0.08} />
+                </linearGradient>
+              </defs>
+
+              <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
+              <XAxis dataKey="time" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+              <YAxis domain={[0, 10]} ticks={[0, 2, 4, 6, 8, 10]} tick={{ fill: '#94a3b8', fontSize: 12 }} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #1e293b',
+                  borderRadius: '0.75rem',
+                  color: '#e2e8f0',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.35)',
+                }}
+              />
+              <Legend wrapperStyle={{ color: '#e2e8f0' }} />
+
+              <Area type="monotone" dataKey="serotonin" name="Serotonin (warmth)" stroke="#ec4899" strokeWidth={2} fill="url(#serotoninFill)" />
+              <Area type="monotone" dataKey="dopamine" name="Dopamine (spark)" stroke="#60a5fa" strokeWidth={2} fill="url(#dopamineFill)" />
+              <Area type="monotone" dataKey="oxytocin" name="Oxytocin (bonding)" stroke="#34d399" strokeWidth={2} fill="url(#oxytocinFill)" />
+              <Area type="monotone" dataKey="cortisol" name="Cortisol (stress)" stroke="#f87171" strokeWidth={2} fill="url(#cortisolFill)" />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="mt-4 text-xs text-slate-500 font-mono leading-relaxed">
+          Taller visualization window keeps each 15-minute checkpoint readable while preventing cortisol troughs from overlapping the empathy and bonding curves.
         </div>
       </div>
     </div>
